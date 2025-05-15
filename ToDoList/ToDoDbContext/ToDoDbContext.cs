@@ -8,6 +8,30 @@ namespace ToDoList.ToDoDbContext
     {
         public ToDoDbContext(DbContextOptions<ToDoDbContext> options) : base(options) { }
 
-        public DbSet<ToDoItem> ToDoItems { get; set; }
+        public DbSet<ToDoItem> ToDoItems { get; set; } = null!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ToDoItem>().HasData(
+                new ToDoItem
+                {
+                    Id = 1,
+                    Title = "Complete the project",
+                    Description = "Adjust the final designs of the UI",
+                    DueDate = DateTime.UtcNow.AddDays(7),
+                    Priority = Priority.High,
+                    IsCompleted = false
+                },
+                new ToDoItem
+                {
+                    Id = 2,
+                    Title = "Refill food supplies",
+                    Description = "Cooking oil, chicken, milk",
+                    DueDate = DateTime.UtcNow.AddDays(3),
+                    Priority = Priority.Medium,
+                    IsCompleted = false
+                }
+                );
+        }
     }
 }
