@@ -17,4 +17,12 @@ namespace ToDoList.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 
+    public enum Priority
+    {
+        Low,
+        Medium,
+        High,
+        Urgent
+    }
+
 }
