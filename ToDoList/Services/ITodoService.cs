@@ -1,10 +1,12 @@
-﻿namespace ToDoList.Services
+﻿using ToDoList.Models;
+
+namespace ToDoList.Services
 {
     public interface ITodoService
     {
-        Task<IEnumerable<ToDoItem>> GetAllToDoAsync();
-        Task<ToDoItem?> GetTodayByIdAssync(int id);
-        Task<IEnumerable<TodoItem>> GetincompleteToDoAsync();
+        Task<IEnumerable<ToDoItem>> GetAllToDosAsync();
+        Task<ToDoItem?> GetTodoByIdAssync(int id);
+        Task<IEnumerable<ToDoItem>> GetIncompleteToDosAsync();
         Task<IEnumerable<ToDoItem>> GetToDosByPriorityAsync(ToDoPriority priority);
         Task AddToDoAsync(ToDoItem ToDoItem);
         Task UpdateToDoAsync(ToDoItem toDoItem);

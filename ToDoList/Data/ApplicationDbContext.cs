@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Models;
 
-namespace ToDoList.ToDoDbContext
+namespace ToDoList.Data
 {
-    public class ToDoDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ToDoDbContext(DbContextOptions<ToDoDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<ToDoItem> ToDoItems { get; set; } = null!;
 
