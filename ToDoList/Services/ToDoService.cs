@@ -4,10 +4,10 @@ using ToDoList.Models;
 
 namespace ToDoList.Services
 {
-    public class ToDoService: ITodoService
+    public class IToDoService: ITodoService
     {
         private readonly ApplicationDbContext _context;
-        public ToDoService(ApplicationDbContext context) 
+        public IToDoService(ApplicationDbContext context) 
         {
             _context = context;
         }
@@ -18,7 +18,7 @@ namespace ToDoList.Services
                 .ThenBy(t=> t.DueDate)
                 .ToListAsync();
         }
-        public async Task<ToDoItem?> GetTodoByIdAssync(int id)
+        public async Task<ToDoItem?> GetTodoByIdAsync(int id)
         {
             return await _context.ToDoItems.FindAsync(id);
         }
@@ -32,7 +32,7 @@ namespace ToDoList.Services
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<ToDoItem>> GetToDosByPriorityAsync(ToDoPriority priority)
+        public async Task<IEnumerable<ToDoItem>> GetToDosByPriorityAsync(Priority priority)
         {
             return await _context.ToDoItems
                 .Where(t => t.Priority == priority)
