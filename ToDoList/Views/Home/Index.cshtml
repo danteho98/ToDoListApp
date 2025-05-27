@@ -1,8 +1,74 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<ToDoList.Models.ToDoItem>
+
+@{
+    ViewData["Title"] = "ToDo List";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>ToDo List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<div class="row mb-3">
+    <div class="col">
+        <div class="btn-group" role="group">
+            <a asp-action="Index" class="btn btn-outline-secondary">All</a>
+            <a asp-action="Index" asp-route-complete="false" class=" btn btn-outline-secondary">Active</a>
+            <a asp-action="Index" asp-route-complete="true" class=" btn btn-outline-secondary">Complete</a>
+
+        </div>
+    </div>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.IsCompleted)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @(item.DueDate.HasValue? item.DueDate.Value.ToShortDateString(): "No date")
+                </td>
+                <td>
+                    <span class="badge @(item.Priority == Priority.High || item.Priority == Priority.Urgent ? "bg-danger" : item.Priority == Priority.Medium? "bg-warning": "bg-info")">
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </span>
+                </td>
+                <td>
+                    <form asp-action="ToggleComplete" asp-route-id="item.Id" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-sm @(item.IsCompleted? "btn-success": "btn-outline-secondary")">
+                            @(item.IsCompleted? "Completed": "Mark Complete")
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
