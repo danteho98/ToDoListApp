@@ -16,7 +16,7 @@ namespace ToDoList.ViewModels
         [DataType(DataType.Date)]
         public DateTime? DueDate { get; set; }
 
-        public Priority Priority { get; set; } = Priority.Medium;
+        public ToDoPriority Priority { get; set; } = ToDoPriority.Medium;
 
     }
 }

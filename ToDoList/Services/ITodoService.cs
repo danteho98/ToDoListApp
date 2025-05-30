@@ -7,7 +7,7 @@ namespace ToDoList.Services
         Task<IEnumerable<ToDoItem>> GetAllToDosAsync();
         Task<ToDoItem?> GetTodoByIdAsync(int id);
         Task<IEnumerable<ToDoItem>> GetIncompleteToDosAsync();
-        Task<IEnumerable<ToDoItem>> GetToDosByPriorityAsync(Priority priority);
+        Task<IEnumerable<ToDoItem>> GetToDosByPriorityAsync(ToDoPriority priority);
         Task AddToDoAsync(ToDoItem ToDoItem);
         Task UpdateToDoAsync(ToDoItem toDoItem);
         Task DeleteToDoAsync(int id);

@@ -50,7 +50,7 @@
                     @(item.DueDate.HasValue? item.DueDate.Value.ToShortDateString(): "No date")
                 </td>
                 <td>
-                    <span class="badge @(item.Priority == Priority.High || item.Priority == Priority.Urgent ? "bg-danger" : item.Priority == Priority.Medium? "bg-warning": "bg-info")">
+                    <span class="badge @(item.Priority == ToDoPriority.High || item.Priority == ToDoPriority.Urgent ? "bg-danger" : item.Priority == ToDoPriority.Medium? "bg-warning": "bg-info")">
                         @Html.DisplayFor(modelItem => item.Priority)
                     </span>
                 </td>

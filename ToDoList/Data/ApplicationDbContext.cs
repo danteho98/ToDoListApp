@@ -19,7 +19,7 @@ namespace ToDoList.Data
                     Title = "Complete the project",
                     Description = "Adjust the final designs of the UI",
                     DueDate = DateTime.UtcNow.AddDays(7),
-                    Priority = Priority.High,
+                    Priority = ToDoPriority.High,
                     IsCompleted = false
                 },
                 new ToDoItem
@@ -28,7 +28,7 @@ namespace ToDoList.Data
                     Title = "Refill food supplies",
                     Description = "Cooking oil, chicken, milk",
                     DueDate = DateTime.UtcNow.AddDays(3),
-                    Priority = Priority.Medium,
+                    Priority = ToDoPriority.Medium,
                     IsCompleted = false
                 }
                 );

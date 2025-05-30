@@ -32,7 +32,7 @@ namespace ToDoList.Services
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<ToDoItem>> GetToDosByPriorityAsync(Priority priority)
+        public async Task<IEnumerable<ToDoItem>> GetToDosByPriorityAsync(ToDoPriority priority)
         {
             return await _context.ToDoItems
                 .Where(t => t.Priority == priority)
