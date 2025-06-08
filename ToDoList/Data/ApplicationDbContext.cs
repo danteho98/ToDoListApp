@@ -12,6 +12,8 @@ namespace ToDoList.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<ToDoItem>().HasData(
                 new ToDoItem
                 {
@@ -31,7 +33,7 @@ namespace ToDoList.Data
                     Priority = ToDoPriority.Medium,
                     IsCompleted = false
                 }
-                );
+            );
         }
     }
 }

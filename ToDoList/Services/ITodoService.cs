@@ -2,7 +2,7 @@
 
 namespace ToDoList.Services
 {
-    public interface ITodoService
+    public interface IToDoService
     {
         Task<IEnumerable<ToDoItem>> GetAllToDosAsync();
         Task<ToDoItem?> GetTodoByIdAsync(int id);
